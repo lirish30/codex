@@ -1,0 +1,259 @@
+:root {
+  color-scheme: dark;
+}
+
+[data-theme='kibo-dark'] {
+  --kibo-bg: #04050a;
+  --kibo-surface: #0c0f1b;
+  --kibo-surface-hover: #13172a;
+  --kibo-border: #1f2336;
+  --kibo-border-strong: #2f354f;
+  --kibo-text-primary: #f5f7ff;
+  --kibo-text-secondary: #b6bdd5;
+  --kibo-accent: #4f6cf7;
+  --kibo-accent-hover: #3b55d8;
+  --kibo-danger: #f45d73;
+  --kibo-shadow: 0 18px 40px rgba(9, 12, 24, 0.34);
+  --kibo-radius: 16px;
+  --kibo-font-body: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+html,
+body {
+  margin: 0;
+  padding: 0;
+  min-height: 100%;
+  background: var(--kibo-bg);
+  color: var(--kibo-text-primary);
+  font-family: var(--kibo-font-body);
+}
+
+body {
+  display: flex;
+  justify-content: center;
+  align-items: flex-start;
+  padding: 40px 16px;
+}
+
+main {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+}
+
+.app-shell {
+  width: 100%;
+  max-width: 560px;
+}
+
+.kibo-card {
+  background: var(--kibo-surface);
+  border-radius: var(--kibo-radius);
+  border: 1px solid var(--kibo-border);
+  box-shadow: var(--kibo-shadow);
+  padding: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+}
+
+.kibo-card__header {
+  padding: 28px 28px 0;
+}
+
+.kibo-card__body {
+  padding: 0 28px 28px;
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+.kibo-card__title {
+  margin: 0;
+  font-size: 1.8rem;
+  font-weight: 600;
+  letter-spacing: -0.01em;
+}
+
+.kibo-card__subtitle {
+  margin: 6px 0 0;
+  color: var(--kibo-text-secondary);
+  font-size: 0.95rem;
+}
+
+.todo-input-row {
+  display: flex;
+  gap: 12px;
+}
+
+.kibo-input {
+  width: 100%;
+  border-radius: 999px;
+  border: 1px solid var(--kibo-border);
+  background: rgba(255, 255, 255, 0.02);
+  color: var(--kibo-text-primary);
+  padding: 12px 18px;
+  font-size: 1rem;
+  transition: border 0.2s ease, background 0.2s ease;
+}
+
+.kibo-input::placeholder {
+  color: var(--kibo-text-secondary);
+}
+
+.kibo-input:focus {
+  outline: none;
+  border: 1px solid var(--kibo-accent);
+  background: rgba(79, 108, 247, 0.08);
+}
+
+.kibo-button {
+  border: none;
+  cursor: pointer;
+  border-radius: 999px;
+  font-weight: 600;
+  padding: 12px 20px;
+  font-size: 0.95rem;
+  transition: transform 0.15s ease, box-shadow 0.2s ease, background 0.2s ease,
+    color 0.2s ease;
+}
+
+.kibo-button:disabled {
+  opacity: 0.4;
+  cursor: not-allowed;
+  transform: none;
+  box-shadow: none;
+}
+
+.kibo-button--primary {
+  background: var(--kibo-accent);
+  color: #fff;
+  box-shadow: 0 10px 20px rgba(79, 108, 247, 0.35);
+}
+
+.kibo-button--primary:hover:not(:disabled) {
+  background: var(--kibo-accent-hover);
+  transform: translateY(-1px);
+}
+
+.kibo-button--ghost {
+  background: transparent;
+  color: var(--kibo-text-secondary);
+}
+
+.kibo-button--ghost:hover:not(:disabled) {
+  color: var(--kibo-text-primary);
+  background: rgba(255, 255, 255, 0.04);
+}
+
+.todo-list {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.todo-item {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  padding: 14px 18px;
+  background: var(--kibo-surface-hover);
+  border-radius: 14px;
+  border: 1px solid transparent;
+  transition: border 0.2s ease, background 0.2s ease, transform 0.15s ease;
+}
+
+.todo-item:hover {
+  border: 1px solid var(--kibo-border-strong);
+  transform: translateY(-1px);
+}
+
+.todo-item__title {
+  flex: 1;
+  font-size: 1rem;
+  margin: 0;
+}
+
+.todo-item__title--complete {
+  text-decoration: line-through;
+  color: var(--kibo-text-secondary);
+}
+
+.todo-empty {
+  text-align: center;
+  padding: 32px 0;
+  color: var(--kibo-text-secondary);
+  border: 1px dashed var(--kibo-border);
+  border-radius: 14px;
+  background: rgba(255, 255, 255, 0.02);
+}
+
+.kibo-checkbox {
+  position: relative;
+  width: 22px;
+  height: 22px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.kibo-checkbox input {
+  appearance: none;
+  margin: 0;
+  width: 100%;
+  height: 100%;
+  position: absolute;
+  cursor: pointer;
+  opacity: 0;
+}
+
+.kibo-checkbox__control {
+  width: 100%;
+  height: 100%;
+  border-radius: 8px;
+  background: rgba(255, 255, 255, 0.06);
+  border: 1px solid var(--kibo-border);
+  transition: background 0.2s ease, border 0.2s ease;
+  position: relative;
+}
+
+.kibo-checkbox input:checked + .kibo-checkbox__control {
+  background: var(--kibo-accent);
+  border-color: var(--kibo-accent);
+}
+
+.kibo-checkbox__control::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background-image: url('data:image/svg+xml;utf8,<svg fill=\"none\" height=\"16\" viewBox=\"0 0 16 16\" width=\"16\" xmlns=\"http://www.w3.org/2000/svg\"><path d=\"M6.33331 11.3333L3.33331 8.33333L2.27331 9.39333L6.33331 13.4533L14 5.78667L12.94 4.72667L6.33331 11.3333Z\" fill=\"white\"/></svg>');
+  background-position: center;
+  background-repeat: no-repeat;
+  opacity: 0;
+  transition: opacity 0.2s ease;
+}
+
+.kibo-checkbox input:checked + .kibo-checkbox__control::after {
+  opacity: 1;
+}
+
+.todo-filters {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 12px;
+}
+
+.todo-filters__buttons {
+  display: flex;
+  gap: 8px;
+}
+
+.todo-stats {
+  color: var(--kibo-text-secondary);
+  font-size: 0.85rem;
+}
