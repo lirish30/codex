@@ -13,6 +13,7 @@
   --kibo-accent: #4f6cf7;
   --kibo-accent-hover: #3b55d8;
   --kibo-danger: #f45d73;
+  --kibo-warning: #f6c86e;
   --kibo-shadow: 0 18px 40px rgba(9, 12, 24, 0.34);
   --kibo-radius: 16px;
   --kibo-font-body: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
@@ -47,7 +48,7 @@ main {
 
 .app-shell {
   width: 100%;
-  max-width: 560px;
+  max-width: 780px;
 }
 
 .kibo-card {
@@ -62,14 +63,14 @@ main {
 }
 
 .kibo-card__header {
-  padding: 28px 28px 0;
+  padding: 32px 32px 0;
 }
 
 .kibo-card__body {
-  padding: 0 28px 28px;
+  padding: 0 32px 32px;
   display: flex;
   flex-direction: column;
-  gap: 20px;
+  gap: 28px;
 }
 
 .kibo-card__title {
@@ -83,11 +84,7 @@ main {
   margin: 6px 0 0;
   color: var(--kibo-text-secondary);
   font-size: 0.95rem;
-}
-
-.todo-input-row {
-  display: flex;
-  gap: 12px;
+  line-height: 1.6;
 }
 
 .kibo-input {
@@ -150,110 +147,206 @@ main {
   background: rgba(255, 255, 255, 0.04);
 }
 
-.todo-list {
+.kibo-textarea {
+  width: 100%;
+  border-radius: 18px;
+  border: 1px solid var(--kibo-border);
+  background: rgba(255, 255, 255, 0.02);
+  color: var(--kibo-text-primary);
+  padding: 14px 18px;
+  font-size: 1rem;
+  resize: vertical;
+  min-height: 150px;
+  transition: border 0.2s ease, background 0.2s ease;
+}
+
+.kibo-textarea::placeholder {
+  color: var(--kibo-text-secondary);
+}
+
+.kibo-textarea:focus {
+  outline: none;
+  border: 1px solid var(--kibo-accent);
+  background: rgba(79, 108, 247, 0.08);
+}
+
+.seo-section {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+.seo-section h2 {
+  margin: 0;
+  font-size: 1.1rem;
+  font-weight: 600;
+}
+
+.seo-section__header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 16px;
+}
+
+.seo-form-grid {
+  display: grid;
+  gap: 16px;
+  grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+}
+
+.seo-field {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.seo-field label {
+  font-weight: 600;
+  font-size: 0.95rem;
+}
+
+.seo-field__helper {
+  font-size: 0.8rem;
+  color: var(--kibo-text-secondary);
+}
+
+.seo-metrics-grid {
+  display: grid;
+  gap: 16px;
+  grid-template-columns: repeat(auto-fit, minmax(210px, 1fr));
+}
+
+.seo-metric {
+  border-radius: 16px;
+  border: 1px solid var(--kibo-border);
+  background: rgba(255, 255, 255, 0.03);
+  padding: 16px 18px;
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+  transition: border 0.2s ease, transform 0.15s ease;
+}
+
+.seo-metric:hover {
+  transform: translateY(-1px);
+}
+
+.seo-metric--success {
+  border-color: rgba(79, 108, 247, 0.6);
+  box-shadow: 0 0 0 1px rgba(79, 108, 247, 0.3);
+}
+
+.seo-metric--warning {
+  border-color: rgba(246, 200, 110, 0.7);
+  background: rgba(246, 200, 110, 0.12);
+}
+
+.seo-metric--error {
+  border-color: rgba(244, 93, 115, 0.7);
+  background: rgba(244, 93, 115, 0.12);
+}
+
+.seo-metric__label {
+  margin: 0;
+  font-size: 0.75rem;
+  text-transform: uppercase;
+  letter-spacing: 0.12em;
+  color: var(--kibo-text-secondary);
+}
+
+.seo-metric__value {
+  margin: 0;
+  font-size: 1.5rem;
+  font-weight: 600;
+}
+
+.seo-metric__detail {
+  margin: 0;
+  font-size: 0.85rem;
+  color: var(--kibo-text-secondary);
+}
+
+.seo-suggestions {
+  margin: 0;
+  padding: 0;
+  list-style: none;
   display: flex;
   flex-direction: column;
   gap: 12px;
 }
 
-.todo-item {
-  display: flex;
-  align-items: center;
-  gap: 14px;
-  padding: 14px 18px;
+.seo-suggestions li {
   background: var(--kibo-surface-hover);
-  border-radius: 14px;
-  border: 1px solid transparent;
-  transition: border 0.2s ease, background 0.2s ease, transform 0.15s ease;
-}
-
-.todo-item:hover {
-  border: 1px solid var(--kibo-border-strong);
-  transform: translateY(-1px);
-}
-
-.todo-item__title {
-  flex: 1;
-  font-size: 1rem;
-  margin: 0;
-}
-
-.todo-item__title--complete {
-  text-decoration: line-through;
-  color: var(--kibo-text-secondary);
-}
-
-.todo-empty {
-  text-align: center;
-  padding: 32px 0;
-  color: var(--kibo-text-secondary);
-  border: 1px dashed var(--kibo-border);
-  border-radius: 14px;
-  background: rgba(255, 255, 255, 0.02);
-}
-
-.kibo-checkbox {
-  position: relative;
-  width: 22px;
-  height: 22px;
-  display: inline-flex;
-  align-items: center;
-  justify-content: center;
-}
-
-.kibo-checkbox input {
-  appearance: none;
-  margin: 0;
-  width: 100%;
-  height: 100%;
-  position: absolute;
-  cursor: pointer;
-  opacity: 0;
-}
-
-.kibo-checkbox__control {
-  width: 100%;
-  height: 100%;
-  border-radius: 8px;
-  background: rgba(255, 255, 255, 0.06);
   border: 1px solid var(--kibo-border);
-  transition: background 0.2s ease, border 0.2s ease;
-  position: relative;
+  border-radius: 14px;
+  padding: 12px 16px;
+  line-height: 1.5;
 }
 
-.kibo-checkbox input:checked + .kibo-checkbox__control {
-  background: var(--kibo-accent);
-  border-color: var(--kibo-accent);
-}
-
-.kibo-checkbox__control::after {
-  content: '';
-  position: absolute;
-  inset: 0;
-  background-image: url('data:image/svg+xml;utf8,<svg fill=\"none\" height=\"16\" viewBox=\"0 0 16 16\" width=\"16\" xmlns=\"http://www.w3.org/2000/svg\"><path d=\"M6.33331 11.3333L3.33331 8.33333L2.27331 9.39333L6.33331 13.4533L14 5.78667L12.94 4.72667L6.33331 11.3333Z\" fill=\"white\"/></svg>');
-  background-position: center;
-  background-repeat: no-repeat;
-  opacity: 0;
-  transition: opacity 0.2s ease;
-}
-
-.kibo-checkbox input:checked + .kibo-checkbox__control::after {
-  opacity: 1;
-}
-
-.todo-filters {
+.seo-keywords {
+  margin: 0;
+  padding: 0;
+  list-style: none;
   display: flex;
-  justify-content: space-between;
-  align-items: center;
+  flex-direction: column;
   gap: 12px;
 }
 
-.todo-filters__buttons {
+.seo-keywords__item {
   display: flex;
-  gap: 8px;
+  justify-content: space-between;
+  align-items: center;
+  gap: 16px;
+  padding: 12px 16px;
+  border-radius: 14px;
+  border: 1px solid var(--kibo-border);
+  background: rgba(255, 255, 255, 0.03);
 }
 
-.todo-stats {
-  color: var(--kibo-text-secondary);
+.seo-keywords__term {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  font-weight: 600;
+  font-size: 1rem;
+}
+
+.seo-keywords__badge {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding: 2px 10px;
+  border-radius: 999px;
+  background: rgba(79, 108, 247, 0.18);
+  color: var(--kibo-text-primary);
+  font-size: 0.75rem;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+}
+
+.seo-keywords__meta {
+  display: flex;
+  gap: 14px;
   font-size: 0.85rem;
+  color: var(--kibo-text-secondary);
+}
+
+.seo-empty-state {
+  text-align: center;
+  padding: 28px;
+  color: var(--kibo-text-secondary);
+  border: 1px dashed var(--kibo-border);
+  border-radius: 14px;
+  background: rgba(255, 255, 255, 0.03);
+}
+
+@media (max-width: 600px) {
+  .kibo-card__header {
+    padding: 24px 24px 0;
+  }
+
+  .kibo-card__body {
+    padding: 0 24px 24px;
+  }
 }

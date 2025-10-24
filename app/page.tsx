@@ -1,9 +1,9 @@
-import { TodoApp } from '@/components/todo/TodoApp';
+import { SeoApp } from '@/components/seo/SeoApp';
 
 export default function HomePage() {
   return (
     <main>
-      <TodoApp />
+      <SeoApp />
     </main>
   );
 }
