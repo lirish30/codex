@@ -8,8 +8,8 @@ import './globals.css';
 const inter = Inter({ subsets: ['latin'] });
 
 export const metadata: Metadata = {
-  title: 'Kibo UI Todo',
-  description: 'Simple todo list built with Next.js and Kibo UI in dark mode.',
+  title: 'SEO Readiness Checklist',
+  description: 'Refine titles, descriptions, and keywords with instant feedback on SEO quality.',
 };
 
 export default function RootLayout({
